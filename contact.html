@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get in touch with All Things Snazzy...">
+  <link href="https://fonts.googleapis.com/css?family=Lemon|Montserrat|Raleway|Roboto|Angelina|HelloWordsmith" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=2">
+  <title>Contact Me - All Things Snazzy…</title>
+</head>
+<body>
+  <header>
+    <h1>All Things Snazzy…</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="cakes.html">CAKE STUFF</a></li>
+        <li><a href="teacher.html">TEACHER STUFF</a></li>
+        <li><a href="art.html">ART STUFF</a></li>
+        <li><a href="announcements.html">WHAT'S NEW</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+       <div class="hamburger-menu">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+    </nav>
+  </header>
+  
+  <!-- Contact -->
+ <main>
+ <section class="container cream">
+  <div class="columns">
+    <div class="picture-column">
+      <img src="photos/contact_pic.jpg" alt="Contact photo" class="contact-picture">
+    </div>
+    <div class="hello-column">
+      <h2 class="purple-cursive">Hello There!</h2>
+      <p>Thanks for visiting my site. I'd love to stay in touch and share news, events, or pics with you. Feel free to drop in your email and say hi!</p>
+    </div>
+    <div class="form-column">
+      <div class="contact-form">
+        <form id="contactForm" action="https://formspree.io/f/myyrabnn" method="POST">
+            <input type="text" name="first_name" placeholder="First Name" required>
+            <input type="text" name="last_name" placeholder="Last Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <textarea name="comment" placeholder="Comment" rows="4" required></textarea>
+            <button type="submit" name="submit">Submit</button>
+        </form>
+        <p class="privacy-statement">Your personal information will never be shared.</p>
+        <p id="formStatus"></p>
+    </div>    
+    </div>
+  </div>
+    <div class="social-media">
+      <a href="https://twitter.com/NazAlibhai" target="_blank" rel="noopener noreferrer">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter logo" class="social-icon" width="32" height="32">
+      </a>
+      <a href="https://www.instagram.com/snazzynazzyart/" target="_blank" rel="noopener noreferrer">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram logo" class="social-icon" width="32" height="32">
+      </a>
+    </div>
+  </section>
+</main>
+
+
+  <footer>
+    <div class="designer">
+      <p class="design-caption">Designed by <a href="https://discord.gg/EK6wrPJEQg" target="_blank" rel="noopener noreferrer">Zakir Alibhai</a></p>
+          <p class="GPT-caption"><a href="https://chat.openai.com/chat" target="_blank" rel="noopener noreferrer">Powered by GPT-4</a></p>
+    </div>
+  </footer>
+   <script>
+  document.querySelector('.hamburger-menu').addEventListener('click', function () {
+    document.querySelector('nav ul').classList.toggle('show');
+  });
+</script>
+<script>
+  window.onload = function() {
+    // Get the URL parameters
+    var params = new URLSearchParams(window.location.search);
+
+    // Get the 'error' parameter
+    var error = params.get('error');
+
+    // If there's an error message, display it
+    if (error) {
+      var errorDiv = document.createElement('div');
+      errorDiv.textContent = 'Error: ' + decodeURIComponent(error);
+      errorDiv.style.color = 'red'; // Make the error message stand out
+      document.querySelector('.form-column').prepend(errorDiv); // Insert the error message at the top of the form column
+    }
+  };
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('contactForm');
+      const formStatus = document.getElementById('formStatus');
+  
+      form.addEventListener('submit', async function (event) {
+          event.preventDefault();
+  
+          // Validation
+          const firstName = form.first_name.value.trim();
+          const lastName = form.last_name.value.trim();
+          const email = form.email.value.trim();
+          const comment = form.comment.value.trim();
+  
+          if (!firstName || !lastName || !email || !comment) {
+              formStatus.textContent = "Please fill out all required fields.";
+              formStatus.style.color = "red";
+              return;
+          }
+  
+          if (!validateEmail(email)) {
+              formStatus.textContent = "Invalid email format.";
+              formStatus.style.color = "red";
+              return;
+          }
+  
+          // Form Data
+          const formData = new FormData(form);
+  
+          // Submit the form
+          try {
+              const response = await fetch(form.action, {
+                  method: form.method,
+                  body: formData,
+                  headers: {
+                      'Accept': 'application/json'
+                  }
+              });
+  
+              if (response.ok) {
+                  formStatus.textContent = "Thanks for your submission!";
+                  formStatus.style.color = "green";
+                  form.reset();
+              } else {
+                  const data = await response.json();
+                  if (data.errors) {
+                      formStatus.textContent = data.errors.map(error => error.message).join(", ");
+                  } else {
+                      formStatus.textContent = "Oops! There was a problem submitting your form";
+                  }
+                  formStatus.style.color = "red";
+              }
+          } catch (error) {
+              formStatus.textContent = "Oops! There was a problem submitting your form";
+              formStatus.style.color = "red";
+          }
+      });
+  
+      function validateEmail(email) {
+          const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return re.test(email);
+      }
+  });
+  </script>  
+</body>
+</html>

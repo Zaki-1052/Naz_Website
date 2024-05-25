@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Lemon|Montserrat|Raleway|Roboto|Angelina|HelloWordsmith" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=2">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+<meta name="description" content="Explore amazing Procreate and Collage Art on All Things Snazzy...">
+  <title>Art - All Things Snazzy…</title>
+</head>
+<body>
+  <header>
+    <h1>All Things Snazzy…</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="cakes.html">CAKE STUFF</a></li>
+        <li><a href="teacher.html">TEACHER STUFF</a></li>
+        <li><a href="art.html">ART STUFF</a></li>
+        <li><a href="announcements.html">WHAT'S NEW</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+       <div class="hamburger-menu">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+    </nav>
+  </header>
+  
+  <!-- Book(s) Page -->
+  <section class="cake-section">
+        <h2 class="cake-title">Procreate Art</h2>
+      </section>
+      <section class="cakes-section">
+        <main class="cakes-container procreate-container"> 
+    <div class="cake">
+      <img src="photos/art1.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/art2.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/art3.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/art4.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/art5.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/art6.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/art7.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/art8.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/art9.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/art10.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/art11.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/art12.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/art13.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/art14.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/art15.jpg" alt="Art Image">
+    </div>
+    </main>
+</section>
+  <div class="purple-line"></div>
+
+  <section class="cake-section">
+        <h2 class="cake-title">Collage and Paint</h2>
+      </section>
+ <section class="cakes-section">
+<main class="cakes-container collage-container">
+    <div class="cake">
+      <img src="photos/collage1.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/collage2.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/collage3.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/collage4.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/collage5.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/collage6.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/collage7.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/collage8.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/collage9.jpg" alt="Art Image">
+    </div>
+  </main>
+  </section>
+  <footer>
+      <p class="copyright">© 2023 Naz Alibhai. All rights reserved.</p>
+    <div class="designer">
+      <p class="design-caption">Designed by <a href="https://discord.gg/EK6wrPJEQg" target="_blank" rel="noopener noreferrer">Zakir Alibhai</a></p>
+          <p class="GPT-caption"><a href="https://chat.openai.com/chat" target="_blank" rel="noopener noreferrer">Powered by GPT-4</a></p>
+    </div>
+  </footer>
+  <script>
+window.onload = function () {
+  var screenWidth = window.innerWidth;
+  if (screenWidth >= 768) {
+    // Procreate Art Masonry
+    var procreateElem = document.querySelector('.procreate-container');
+    var procreateMsnry = new Masonry(procreateElem, {
+      itemSelector: '.cake',
+      columnWidth: 100,
+      gutter: 15,
+      percentPosition: true,
+      horizontalOrder: true,
+    });
+
+    // Collage Art Masonry
+    var collageElem = document.querySelector('.collage-container');
+    var collageMsnry = new Masonry(collageElem, {
+      itemSelector: '.cake',
+      columnWidth: 100,
+      gutter: 15,
+      percentPosition: true,
+      horizontalOrder: true,
+    });
+
+    // Wait for images to load before initializing Masonry
+    imagesLoaded(procreateElem, function () {
+      procreateMsnry.layout();
+    });
+
+    imagesLoaded(collageElem, function () {
+      collageMsnry.layout();
+    });
+  }
+};
+</script>
+ <script>
+  document.querySelector('.hamburger-menu').addEventListener('click', function () {
+    document.querySelector('nav ul').classList.toggle('show');
+  });
+</script>
+<script>
+  // Get all images that have the class 'lazyload'
+  var lazyImages = [].slice.call(document.querySelectorAll("img.lazyload"));
+
+  // If Intersection Observer is supported
+  if ("IntersectionObserver" in window) {
+    // Create a new observer
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      // Loop through IntersectionObserverEntry objects
+      entries.forEach(function(entry) {
+        // If the image is in the viewport
+        if (entry.isIntersecting) {
+          // This is the image that is about to be lazy loaded
+          let lazyImage = entry.target;
+          // Replace the src with the data-src
+          lazyImage.src = lazyImage.dataset.src;
+          // The image has loaded, so you can remove the class
+          lazyImage.classList.remove("lazyload");
+          // Stop watching this image
+          lazyImageObserver.unobserve(lazyImage);
+        }
+      });
+    });
+
+    // Start watching the images
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage);
+    });
+  } else {
+    // Fallback for browsers that don't support IntersectionObserver
+    lazyImages.forEach(function(lazyImage) {
+      lazyImage.src = lazyImage.dataset.src;
+      lazyImage.classList.remove("lazyload");
+    });
+  }
+</script>
+</body>
+</html>

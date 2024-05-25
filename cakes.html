@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Lemon|Montserrat|Raleway|Roboto|Angelina|HelloWordsmith" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=2">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script>
+  <title>Cakes - All Things Snazzy…</title>
+</head>
+<body class="cakes-page">
+  <header>
+    <h1>All Things Snazzy…</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="cakes.html">CAKE STUFF</a></li>
+        <li><a href="teacher.html">TEACHER STUFF</a></li>
+        <li><a href="art.html">ART STUFF</a></li>
+        <li><a href="announcements.html">WHAT'S NEW</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+       <div class="hamburger-menu">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+    </nav>
+  </header>
+  <!-- Cake Pics -->
+  <section class="cake-section">
+        <h2 class="cake-title">Some of My Cakes</h2>
+      </section>
+ <section class="cakes-section">
+  <main class="cakes-container">
+    <div class="cake">
+      <img src="photos/cake1.jpg" alt="Cake Image">
+    </div>
+    <div class="cake">
+      <img src="photos/cake2.jpg" alt="Cake Image">
+    </div>
+    <div class="cake">
+      <img src="photos/cake3.jpg" alt="Cake Image">
+    </div>
+    <div class="cake">
+      <img src="photos/cake4.jpg" alt="Cake Image">
+    </div>
+    <div class="cake">
+      <img src="photos/cake5.jpg" alt="Cake Image">
+    </div>
+    <div class="cake">
+      <img src="photos/cake6.jpg" alt="Cake Image">
+    </div>
+    <div class="cake">
+      <img src="photos/cake7.jpg" alt="Cake Image">
+    </div>
+    <div class="cake">
+      <img src="photos/cake8.jpg" alt="Cake Image">
+    </div>
+    <div class="cake">
+      <img src="photos/cake9.jpg" alt="Cake Image">
+    </div>
+    <div class="cake">
+      <img src="photos/cake10.jpg" alt="Cake Image">
+    </div>
+    <div class="cake">
+      <img src="photos/cake11.jpg" alt="Cake Image">
+    </div>
+    <div class="cake">
+      <img src="photos/cake12.jpg" alt="Cake Image">
+    </div>
+    <div class="cake">
+      <img src="photos/cake13.jpg" alt="Cake Image">
+    </div>
+    <div class="cake">
+      <img src="photos/cake14.jpg" alt="Cake Image">
+    </div>
+    <div class="cake">
+      <img src="photos/cake19.jpg" alt="Cake Image">
+    </div>
+    <div class="cake">
+      <img src="photos/cake16.jpg" alt="Cake Image">
+    </div>
+    <div class="cake">
+      <img src="photos/cake17.jpg" alt="Cake Image">
+    </div>
+    <div class="cake">
+      <img src="photos/cake18.jpg" alt="Cake Image">
+    </div>
+    <div class="cake">
+      <img src="photos/cake15.jpg" alt="Cake Image">
+    </div>
+  </main>
+</section>
+  <footer>
+      <p class="copyright">© 2023 Naz Alibhai. All rights reserved.</p>
+    <div class="designer">
+      <p class="design-caption">Designed by <a href="https://discord.gg/EK6wrPJEQg" target="_blank" rel="noopener noreferrer">Zakir Alibhai</a></p>
+          <p class="GPT-caption"><a href="https://chat.openai.com/chat" target="_blank" rel="noopener noreferrer">Powered by GPT-4</a></p>
+    </div>
+  </footer>
+<script>
+window.onload = function () {
+  var screenWidth = window.innerWidth;
+  if (screenWidth >= 768) {
+    var elem = document.querySelector('.cakes-container');
+    var columnWidthValue;
+    if (screenWidth < 768) {
+      columnWidthValue = screenWidth * 0.5;
+    } else if (screenWidth >= 768 && screenWidth <= 1024) {
+      columnWidthValue = 0.35; // column width for tablet
+    } else {
+      columnWidthValue = 100; // column width for larger screens
+    }
+    var gutterValue = 15;
+    var msnry = new Masonry(elem, {
+      itemSelector: '.cake',
+      columnWidth: columnWidthValue,
+      gutter: gutterValue,
+      percentPosition: true,
+      horizontalOrder: true,
+    });
+    // Wait for images to load before initializing Masonry
+    imagesLoaded(elem, function () {
+      msnry.layout();
+    });
+  }
+};
+</script>
+ <script>
+  document.querySelector('.hamburger-menu').addEventListener('click', function () {
+    document.querySelector('nav ul').classList.toggle('show');
+  });
+</script>
+<script>
+  // Get all images that have the class 'lazyload'
+  var lazyImages = [].slice.call(document.querySelectorAll("img.lazyload"));
+
+  // If Intersection Observer is supported
+  if ("IntersectionObserver" in window) {
+    // Create a new observer
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      // Loop through IntersectionObserverEntry objects
+      entries.forEach(function(entry) {
+        // If the image is in the viewport
+        if (entry.isIntersecting) {
+          // This is the image that is about to be lazy loaded
+          let lazyImage = entry.target;
+          // Replace the src with the data-src
+          lazyImage.src = lazyImage.dataset.src;
+          // The image has loaded, so you can remove the class
+          lazyImage.classList.remove("lazyload");
+          // Stop watching this image
+          lazyImageObserver.unobserve(lazyImage);
+        }
+      });
+    });
+
+    // Start watching the images
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage);
+    });
+  } else {
+    // Fallback for browsers that don't support IntersectionObserver
+    lazyImages.forEach(function(lazyImage) {
+      lazyImage.src = lazyImage.dataset.src;
+      lazyImage.classList.remove("lazyload");
+    });
+  }
+</script>
+</body>
+</html>
+
