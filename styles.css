@@ -628,13 +628,13 @@ text-decoration: none;
 color: black;
 }
 
-.GPT-caption a {
+.git-caption a {
   color: black;
   text-decoration: none;
   font-style: italic;
 }
 
-.GPT-caption a:hover {
+.git-caption a:hover {
   text-decoration: underline;
 }
 
