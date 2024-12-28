@@ -733,6 +733,79 @@ footer {
 }
 
 
+.mentor-paragraph {
+  font-family: 'HelloAli', Arial, sans-serif;
+  font-size: 24px;
+  color: purple;
+  line-height: 1.2;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.mentor-paragraph a {
+  color: purple;
+  text-decoration: none;
+}
+
+ .mentor-paragraph a:hover {
+  text-decoration: underline;
+}
+
+.mentor-page {
+  background-color: #f7eac9; /* Yellow-cream background */
+  padding: 1rem;
+}
+
+.mentor-text {
+  font-family: 'HelloAli', Arial, sans-serif;
+  font-size: 24px;
+  color: purple;
+  text-align: center;
+  margin-bottom: 0.5em;
+  width: 78%; /* Adjust the width of the text container to match the image width */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.mentor-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 2em;
+}
+
+.mentor-text {
+  font-family: 'HelloAli', Arial, sans-serif;
+  font-size: 24px;
+  color: purple;
+  line-height: 1.15;
+  margin-bottom: 2em;
+  text-align: center;
+}
+
+.mentor-image {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  margin-bottom: 3em;
+  border: 3px solid black;
+  box-shadow: 2px 2px 0px 0px black;
+}
+
+/* Update the existing announcements-heading class */
+.announcements-heading {
+  font-family: 'HelloKennedy', Arial, sans-serif;
+  font-size: 36px;
+  color: purple;
+  padding-top: 1em;
+  padding-bottom: 4em;
+  text-align: center;
+}
+
+
 /* Media Queries */
 
 
@@ -993,6 +1066,44 @@ nav ul li a {
   margin-bottom: 1em;
   text-align: center;
 }
+
+.mentor-section {
+  width: 95%;
+  padding-top: 1em;
+}
+
+.mentor-text {
+  font-size: 18px;
+  margin-bottom: 1.5em;
+}
+
+.mentor-image {
+  width: 95%;
+  margin-bottom: 2em;
+}
+
+.announcements-heading {
+  font-size: 28px;
+  padding-top: 0.5em;
+  padding-bottom: 3em;
+}
+
+
+.mentor-text {
+  font-family: 'HelloAli', Arial, sans-serif;
+  font-size: 24px;
+  color: purple;
+  text-align: justify;
+  margin-bottom: 0.5em;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mentor-paragraph {
+  font-size: 23.4px;
+}
+
 
 }
 
