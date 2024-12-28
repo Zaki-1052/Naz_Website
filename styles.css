@@ -805,6 +805,14 @@ footer {
   text-align: center;
 }
 
+.art-paragraph {
+  font-family: 'HelloAli', Arial, sans-serif;
+  font-size: 20px;
+  color: purple;
+  line-height: 1.1;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
 
 /* Media Queries */
 
@@ -1102,6 +1110,15 @@ nav ul li a {
 
 .mentor-paragraph {
   font-size: 23.4px;
+}
+
+.art-paragraph {
+  font-family: 'HelloAli', Arial, sans-serif;
+  font-size: 18px;
+  color: purple;
+  line-height: 1;
+  margin-bottom: 0.5em;
+  text-align: center;
 }
 
 
