@@ -133,7 +133,7 @@ class MasonryGrid {
         gutter: this.config.gutter,
         percentPosition: true,
         transitionDuration: 0,
-        fitWidth: true, // This should help with centering
+        fitWidth: true, // Keep this for proper centering - masonry knows best!
         // Note: horizontalOrder is NOT used to allow proper gap filling
       });
 
