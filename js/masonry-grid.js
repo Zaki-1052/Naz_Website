@@ -177,6 +177,15 @@ class MasonryGrid {
         masonryOptions: this.masonry.options
       });
       
+      // VALIDATION LOG #3: Check container width correlation
+      console.log('🎯 CONTAINER WIDTH DEBUG:', {
+        windowWidth: window.innerWidth,
+        containerWidth: this.container.offsetWidth,
+        containerMaxWidth: window.getComputedStyle(this.container).maxWidth,
+        isAtMaxWidth: this.container.offsetWidth >= 1300,
+        breakpointUsed: breakpoint.name
+      });
+      
       // Check centering after masonry init
       setTimeout(() => {
         console.log('📏 Post-masonry container position:', {

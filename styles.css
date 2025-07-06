@@ -1159,8 +1159,8 @@ nav ul li a {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-left: 62px;
-    column-width: 0.35;
+    //margin-left: 62px;
+    //column-width: 0.35;
   }
 
 }

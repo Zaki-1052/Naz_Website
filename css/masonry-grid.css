@@ -6,7 +6,7 @@
 /* Base container styles */
 .masonry-grid-container {
   width: 100%;
-  max-width: 1300px; /* Increased from 1200px to fit 5 columns comfortably */
+  max-width: 1200px; /* Increased from 1200px to fit 5 columns comfortably */
   margin: 0 auto;
   padding: 2rem;
 }
@@ -62,9 +62,10 @@
     max-width: 220px;
   }
   
-  /* Fix gutter specificity conflict for desktop+ breakpoints */
+  /* Grid items for masonry - let masonry handle gutter spacing */
   .masonry-initialized .cake {
-    margin-bottom: 15px !important;
+    width: auto;
+    max-width: 220px;
   }
 }
 
@@ -113,7 +114,7 @@
 .masonry-grid-container .cake {
   /* Inherit grid-item styles */
   display: inline-block;
-  margin-bottom: 15px; /* Match the gutter size */
+  margin-bottom: 0.75rem; /* Will be overridden by masonry gutter */
   width: 100%;
   vertical-align: top;
   transition: all 0.3s ease;
@@ -147,6 +148,7 @@
 @media (min-width: 1400px) {
   .masonry-initialized .cake {
     max-width: 240px; /* Match the grid-item sizing */
+    min-width: 220px; /* Force minimum width to prevent 5th column shrinking */
   }
 }
 
