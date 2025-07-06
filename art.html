@@ -144,42 +144,24 @@
       <p class="git-caption">Hosted on <a href="https://github.com/Zaki-1052/Naz_Website" target="_blank" rel="noopener noreferrer">GitHub Pages</a></p>    </div>
   </footer>
   <script>
-window.onload = function () {
+window.addEventListener('load', function () {
   var screenWidth = window.innerWidth;
   if (screenWidth >= 768) {
     // Procreate Art Masonry
     var procreateElem = document.querySelector('.procreate-container');
-    var procreateMsnry = new Masonry(procreateElem, {
-      itemSelector: '.cake',
-      columnWidth: 220,
-      gutter: 15,
-      horizontalOrder: true,
-      fitWidth: true
-    });
-/*
-    // Collage Art Masonry
-    var collageElem = document.querySelector('.collage-container');
-    var collageMsnry = new Masonry(collageElem, {
-      itemSelector: '.cake',
-      columnWidth: 100,
-      gutter: 15,
-      percentPosition: true,
-      horizontalOrder: true,
-    });
-    */
-
-    // Wait for images to load before initializing Masonry
+    
+    // Initialize Masonry after all images have loaded
     imagesLoaded(procreateElem, function () {
-      procreateMsnry.layout();
+      var procreateMsnry = new Masonry(procreateElem, {
+        itemSelector: '.cake',
+        columnWidth: 220,
+        gutter: 15,
+        horizontalOrder: true,
+        transitionDuration: 0
+      });
     });
-
-    /*
-    imagesLoaded(collageElem, function () {
-      collageMsnry.layout();
-    });
-    */
   }
-};
+});
 </script>
  <script>
   document.querySelector('.hamburger-menu').addEventListener('click', function () {
