@@ -62,8 +62,9 @@
     max-width: 220px;
   }
   
-  /* Grid items for masonry - let masonry handle gutter spacing */
-  .masonry-initialized .cake {
+  /* Let masonry handle all spacing - remove CSS margin conflicts */
+  .masonry-grid-container.masonry-initialized .cake {
+    margin-bottom: 0 !important; /* Clear all CSS margins, let masonry gutter (15px) handle spacing */
     width: auto;
     max-width: 220px;
   }
