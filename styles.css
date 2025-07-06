@@ -955,14 +955,7 @@ nav ul li a {
 
 /* End of Home Page; Start of Images */
 
-.cakes-container {
-  padding: 2rem;
-  width: 100%;
-  max-width: 1200px;
-  display: flex;
-  justify-content: space-around; /* or justify-content: space-evenly; */
-  flex-wrap: wrap;
-}
+/* Mobile styles for cakes-container are handled in the media query section */
 
 /* Teacher and Craft pages */
   .teacher-section, .crafts-section {

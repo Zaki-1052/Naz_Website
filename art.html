@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css?family=Lemon|Montserrat|Raleway|Roboto|Angelina|HelloWordsmith" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=2">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
-    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+  <link rel="stylesheet" href="css/masonry-grid.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+  <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+  <script src="js/masonry-grid.js"></script>
 <meta name="description" content="Explore amazing Procreate Art on All Things Snazzy...">
   <title>Art - All Things Snazzy…</title>
 </head>
@@ -38,8 +40,8 @@
       <!-- Procreate Art -->
         <p class="art-paragraph">Some of my favorite Procreate tutorials include:</p>
           <p class="art-paragraph">Genevieve's Design Studio, Art with Flo, Siakula, Lisa Bardot, Joel Create, and James Julier Art </p>
-      <section class="cakes-section">
-        <main class="cakes-container procreate-container"> 
+      <section class="masonry-section">
+        <main class="masonry-grid-container" data-masonry-grid> 
     <div class="cake">
       <img src="photos/art1.jpg" alt="Art Image">
     </div>
@@ -145,42 +147,87 @@
       <p class="git-caption">Hosted on <a href="https://github.com/Zaki-1052/Naz_Website" target="_blank" rel="noopener noreferrer">GitHub Pages</a></p>    </div>
   </footer>
   <script>
-window.onload = function () {
-  var screenWidth = window.innerWidth;
-  if (screenWidth >= 768) {
-    // Procreate Art Masonry
-    var procreateElem = document.querySelector('.procreate-container');
-    var procreateMsnry = new Masonry(procreateElem, {
-      itemSelector: '.cake',
-      columnWidth: 100,
-      gutter: 15,
-      horizontalOrder: true,
-      //fitWidth: true
-    });
-/*
-    // Collage Art Masonry
-    var collageElem = document.querySelector('.collage-container');
-    var collageMsnry = new Masonry(collageElem, {
-      itemSelector: '.cake',
-      columnWidth: 100,
-      gutter: 15,
-      percentPosition: true,
-      horizontalOrder: true,
-    });
-    */
+// Detailed logging for debugging
+console.log('=== ART PAGE MASONRY DEBUG LOGS ===');
+console.log('Page loaded at:', new Date().toISOString());
+console.log('Window dimensions:', window.innerWidth + 'x' + window.innerHeight);
+console.log('User agent:', navigator.userAgent);
 
-    // Wait for images to load before initializing Masonry
-    imagesLoaded(procreateElem, function () {
-      procreateMsnry.layout();
-    });
+// Log when masonry grid is found
+const container = document.querySelector('.masonry-grid-container');
+console.log('Container found:', !!container);
+if (container) {
+  console.log('Container classes:', container.className);
+  console.log('Container offsetWidth:', container.offsetWidth);
+  console.log('Container offsetLeft:', container.offsetLeft);
+  console.log('Container computed styles:');
+  const containerStyles = window.getComputedStyle(container);
+  console.log('- display:', containerStyles.display);
+  console.log('- margin:', containerStyles.margin);
+  console.log('- padding:', containerStyles.padding);
+  console.log('- position:', containerStyles.position);
+  console.log('- left:', containerStyles.left);
+  console.log('- transform:', containerStyles.transform);
+  
+  // Log parent container
+  const parent = container.parentElement;
+  console.log('Parent element:', parent.tagName, parent.className);
+  const parentStyles = window.getComputedStyle(parent);
+  console.log('Parent styles:');
+  console.log('- display:', parentStyles.display);
+  console.log('- justify-content:', parentStyles.justifyContent);
+  console.log('- align-items:', parentStyles.alignItems);
+  console.log('- text-align:', parentStyles.textAlign);
+}
 
-    /*
-    imagesLoaded(collageElem, function () {
-      collageMsnry.layout();
+// Log cake elements
+const cakes = document.querySelectorAll('.cake');
+console.log('Found', cakes.length, 'cake elements');
+if (cakes.length > 0) {
+  console.log('First cake element:');
+  const firstCake = cakes[0];
+  console.log('- offsetWidth:', firstCake.offsetWidth);
+  console.log('- offsetLeft:', firstCake.offsetLeft);
+  const cakeStyles = window.getComputedStyle(firstCake);
+  console.log('- display:', cakeStyles.display);
+  console.log('- position:', cakeStyles.position);
+  console.log('- float:', cakeStyles.float);
+  console.log('- margin:', cakeStyles.margin);
+}
+
+// Watch for masonry initialization
+let checkCount = 0;
+const checkMasonry = setInterval(() => {
+  checkCount++;
+  console.log('Check #' + checkCount + ' - Looking for masonry initialization...');
+  
+  if (container && container.classList.contains('masonry-initialized')) {
+    console.log('✅ MASONRY INITIALIZED!');
+    console.log('Container after masonry:');
+    console.log('- offsetWidth:', container.offsetWidth);
+    console.log('- offsetLeft:', container.offsetLeft);
+    console.log('- scrollWidth:', container.scrollWidth);
+    
+    // Log first few cake positions after masonry
+    cakes.forEach((cake, index) => {
+      if (index < 5) {
+        console.log(`Cake ${index + 1} position:`, {
+          left: cake.offsetLeft,
+          top: cake.offsetTop,
+          width: cake.offsetWidth,
+          height: cake.offsetHeight
+        });
+      }
     });
-    */
+    
+    clearInterval(checkMasonry);
+  } else if (checkCount > 50) {
+    console.log('❌ Masonry not initialized after 50 checks');
+    clearInterval(checkMasonry);
   }
-};
+}, 100);
+
+console.log('=== END INITIAL LOGS ===');
 </script>
  <script>
   document.querySelector('.hamburger-menu').addEventListener('click', function () {

@@ -1,0 +1,163 @@
+/**
+ * Modular Masonry Grid CSS
+ * Clean, conflict-free styles for the masonry grid system
+ */
+
+/* Base container styles */
+.masonry-grid-container {
+  width: 100%;
+  max-width: 1400px; /* Increased from 1200px to fit 5 columns comfortably */
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Grid items - use generic class that can be applied to any element */
+.grid-item {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  width: 100%;
+  vertical-align: top;
+}
+
+.grid-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* Mobile-first responsive design (below 768px) */
+@media (max-width: 767px) {
+  .masonry-grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+  
+  .grid-item {
+    flex: 0 1 calc(50% - 0.375rem);
+    margin-bottom: 0;
+    max-width: 200px;
+  }
+}
+
+/* Tablet and up - masonry takes over */
+@media (min-width: 768px) {
+  /* Remove flexbox when masonry is active */
+  .masonry-grid-container.masonry-initialized {
+    display: block;
+    /* Force centering even after masonry initialization */
+    margin: 0 auto !important;
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+  }
+  
+  /* Grid items for masonry */
+  .masonry-initialized .grid-item {
+    width: auto;
+    max-width: 220px;
+  }
+}
+
+/* Responsive breakpoints for masonry column sizing */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Tablet: 3 columns */
+  .masonry-initialized .grid-item {
+    max-width: 200px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1399px) {
+  /* Desktop: 4 columns */
+  .masonry-initialized .grid-item {
+    max-width: 220px;
+  }
+}
+
+@media (min-width: 1400px) {
+  /* Large screens: 5 columns */
+  .masonry-initialized .grid-item {
+    max-width: 240px; /* Increased from 200px to prevent images from getting too small */
+  }
+}
+
+/* Smooth transitions for better UX */
+.grid-item {
+  transition: all 0.3s ease;
+}
+
+.grid-item:hover {
+  transform: scale(1.02);
+  z-index: 1;
+}
+
+/* Loading state */
+.masonry-grid-container:not(.masonry-initialized) .grid-item {
+  opacity: 0.7;
+}
+
+.masonry-grid-container.masonry-initialized .grid-item {
+  opacity: 1;
+}
+
+/* Legacy support - allow existing .cake class to work */
+.masonry-grid-container .cake {
+  /* Inherit grid-item styles */
+  display: inline-block;
+  margin-bottom: 15px; /* Match the gutter size */
+  width: 100%;
+  vertical-align: top;
+  transition: all 0.3s ease;
+}
+
+.masonry-grid-container .cake img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* Mobile support for legacy .cake class */
+@media (max-width: 767px) {
+  .masonry-grid-container .cake {
+    flex: 0 1 calc(50% - 0.375rem);
+    margin-bottom: 0;
+    max-width: 200px;
+  }
+}
+
+/* Masonry support for legacy .cake class */
+@media (min-width: 768px) {
+  .masonry-initialized .cake {
+    width: auto;
+    max-width: 220px;
+  }
+}
+
+/* Large screens for .cake elements */
+@media (min-width: 1400px) {
+  .masonry-initialized .cake {
+    max-width: 240px; /* Match the grid-item sizing */
+  }
+}
+
+/* Section wrapper to ensure proper centering */
+.masonry-section {
+  background-color: #f7eac9;
+  min-height: calc(100vh - 40px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 2rem;
+}
+
+@media (max-width: 767px) {
+  .masonry-section {
+    align-items: flex-start;
+    padding-top: 1rem;
+  }
+}
