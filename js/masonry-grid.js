@@ -186,6 +186,21 @@ class MasonryGrid {
         breakpointUsed: breakpoint.name
       });
       
+      // VALIDATION LOG #4: Check centering math
+      const bodyWidth = document.body.offsetWidth;
+      const expectedOffset = (window.innerWidth - this.container.offsetWidth) / 2;
+      console.log('🎯 CENTERING DEBUG:', {
+        windowInnerWidth: window.innerWidth,
+        bodyOffsetWidth: bodyWidth,
+        containerOffsetWidth: this.container.offsetWidth,
+        containerOffsetLeft: this.container.offsetLeft,
+        expectedOffset: expectedOffset,
+        actualOffset: this.container.offsetLeft,
+        differenceFromExpected: this.container.offsetLeft - expectedOffset,
+        bodyMargin: window.getComputedStyle(document.body).margin,
+        bodyPadding: window.getComputedStyle(document.body).padding
+      });
+      
       // Check centering after masonry init
       setTimeout(() => {
         console.log('📏 Post-masonry container position:', {
