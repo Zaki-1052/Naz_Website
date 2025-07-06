@@ -82,9 +82,9 @@
     <div class="cake">
       <img src="photos/art14.jpg" alt="Art Image">
     </div>
-    <div class="cake">
+    <!-- <div class="cake">
       <img src="photos/art15.jpg" alt="Art Image">
-    </div>
+    </div> -->
     <div class="cake">
       <img src="photos/art16.jpg" alt="Art Image">
     </div>
@@ -92,10 +92,10 @@
       <img src="photos/art17.jpg" alt="Art Image">
     </div>
     <div class="cake">
-      <img src="photos/art18.jpg" alt="Art Image">
+      <img src="photos/art18.JPG" alt="Art Image">
     </div>
     <div class="cake">
-      <img src="photos/art19.jpg" alt="Art Image">
+      <img src="photos/art19.JPG" alt="Art Image">
     </div>
     </main>
 </section>
@@ -146,20 +146,31 @@
   <script>
 window.addEventListener('load', function () {
   var screenWidth = window.innerWidth;
+  
   if (screenWidth >= 768) {
-    // Procreate Art Masonry
     var procreateElem = document.querySelector('.procreate-container');
     
-    // Initialize Masonry after all images have loaded
-    imagesLoaded(procreateElem, function () {
-      var procreateMsnry = new Masonry(procreateElem, {
-        itemSelector: '.cake',
-        columnWidth: 220,
-        gutter: 15,
-        horizontalOrder: true,
-        transitionDuration: 0
+    if (procreateElem) {
+      // Initialize Masonry after all images have loaded
+      imagesLoaded(procreateElem, function () {
+        // Create a dummy element to calculate column width
+        var columnWidth = procreateElem.querySelector('.cake');
+        
+        var procreateMsnry = new Masonry(procreateElem, {
+          itemSelector: '.cake',
+          columnWidth: columnWidth,
+          gutter: 15,
+          percentPosition: true,
+          transitionDuration: 0,
+          fitWidth: true
+        });
+        
+        // Force relayout after a short delay to ensure all images are positioned
+        setTimeout(function() {
+          procreateMsnry.layout();
+        }, 100);
       });
-    });
+    }
   }
 });
 </script>
