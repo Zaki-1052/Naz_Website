@@ -1163,24 +1163,6 @@ nav ul li a {
     //column-width: 0.35;
   }
 
-  /* Mobile layout for masonry containers - restore original behavior */
-  .masonry-grid-container {
-    display: flex !important;
-    justify-content: center !important;
-    flex-wrap: wrap !important;
-    padding: 2rem;
-    max-width: 100% !important;
-    width: 100% !important;
-  }
-  
-  .masonry-grid-container .cake {
-    display: inline-block !important;
-    margin-bottom: 0.75rem !important;
-    max-width: 220px !important;
-    position: static !important; /* Override masonry positioning */
-    left: auto !important;
-    top: auto !important;
-  }
 
 }
 
