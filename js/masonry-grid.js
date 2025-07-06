@@ -148,7 +148,33 @@ class MasonryGrid {
         containerWidth: this.container.offsetWidth,
         containerOffsetLeft: this.container.offsetLeft,
         parentWidth: this.container.parentElement.offsetWidth,
-        masonryColumns: this.masonry.cols
+        masonryColumns: this.masonry.cols,
+        gutterSetting: this.config.gutter,
+        masonryGutter: this.masonry.gutter
+      });
+      
+      // VALIDATION LOG #1: Check CSS specificity 
+      const firstCake = this.container.querySelector('.cake');
+      if (firstCake) {
+        const cakeStyles = window.getComputedStyle(firstCake);
+        console.log('🎯 CSS VALIDATION - Cake styles at init:', {
+          marginBottom: cakeStyles.marginBottom,
+          marginTop: cakeStyles.marginTop, 
+          maxWidth: cakeStyles.maxWidth,
+          display: cakeStyles.display
+        });
+        
+        // Check what CSS rules are being applied
+        console.log('🎯 CSS VALIDATION - Which stylesheet wins:');
+        console.log('- masonry-grid.css rule should be: 15px');
+        console.log('- styles.css rule might be: 12px or 0.75rem');
+      }
+      
+      // VALIDATION LOG #2: Check masonry gutter application
+      console.log('🎯 MASONRY VALIDATION - Gutter settings:', {
+        configGutter: this.config.gutter,
+        masonryInstanceGutter: this.masonry.gutter,
+        masonryOptions: this.masonry.options
       });
       
       // Check centering after masonry init
@@ -235,6 +261,8 @@ window.MasonryGrid = MasonryGrid;
 // Auto-initialize grids with data attributes
 document.addEventListener('DOMContentLoaded', () => {
   console.log('🚀 Auto-initializing masonry grids...');
+  console.log('Window size at DOM ready:', window.innerWidth + 'x' + window.innerHeight);
+  
   const autoGrids = document.querySelectorAll('[data-masonry-grid]');
   console.log('Found', autoGrids.length, 'grids to initialize');
   
@@ -243,6 +271,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const configAttr = container.getAttribute('data-masonry-config');
     const config = configAttr ? JSON.parse(configAttr) : {};
     console.log('Config for grid:', config);
-    new MasonryGrid(container, config);
+    
+    // Ensure CSS is fully loaded before initializing masonry
+    setTimeout(() => {
+      // Double check that CSS has been applied by checking computed styles
+      const testElement = container.querySelector('.cake');
+      if (testElement) {
+        const computedStyle = window.getComputedStyle(testElement);
+        console.log('🎨 CSS check - cake margin-bottom:', computedStyle.marginBottom);
+        console.log('🎨 CSS check - cake max-width:', computedStyle.maxWidth);
+      }
+      new MasonryGrid(container, config);
+    }, 200); // Increased delay to ensure CSS is applied
   });
 });

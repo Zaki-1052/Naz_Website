@@ -6,7 +6,7 @@
 /* Base container styles */
 .masonry-grid-container {
   width: 100%;
-  max-width: 1400px; /* Increased from 1200px to fit 5 columns comfortably */
+  max-width: 1300px; /* Increased from 1200px to fit 5 columns comfortably */
   margin: 0 auto;
   padding: 2rem;
 }
@@ -60,6 +60,11 @@
   .masonry-initialized .grid-item {
     width: auto;
     max-width: 220px;
+  }
+  
+  /* Fix gutter specificity conflict for desktop+ breakpoints */
+  .masonry-initialized .cake {
+    margin-bottom: 15px !important;
   }
 }
 
