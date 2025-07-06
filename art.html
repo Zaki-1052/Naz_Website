@@ -6,6 +6,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lemon|Montserrat|Raleway|Roboto|Angelina|HelloWordsmith" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=2">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 <meta name="description" content="Explore amazing Procreate Art on All Things Snazzy...">
   <title>Art - All Things Snazzy…</title>
 </head>
@@ -84,6 +85,18 @@
     <div class="cake">
       <img src="photos/art15.jpg" alt="Art Image">
     </div>
+    <div class="cake">
+      <img src="photos/art16.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/art17.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/art18.jpg" alt="Art Image">
+    </div>
+    <div class="cake">
+      <img src="photos/art19.jpg" alt="Art Image">
+    </div>
     </main>
 </section>
 <!--
@@ -138,10 +151,10 @@ window.onload = function () {
     var procreateElem = document.querySelector('.procreate-container');
     var procreateMsnry = new Masonry(procreateElem, {
       itemSelector: '.cake',
-      columnWidth: 100,
+      columnWidth: 220,
       gutter: 15,
-      percentPosition: true,
       horizontalOrder: true,
+      fitWidth: true
     });
 /*
     // Collage Art Masonry
@@ -160,9 +173,11 @@ window.onload = function () {
       procreateMsnry.layout();
     });
 
+    /*
     imagesLoaded(collageElem, function () {
       collageMsnry.layout();
     });
+    */
   }
 };
 </script>

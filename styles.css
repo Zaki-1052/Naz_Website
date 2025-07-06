@@ -455,9 +455,7 @@ button {
   padding: 2rem;
   width: 100%;
   max-width: 1200px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  margin: 0 auto;
 }
 
 
