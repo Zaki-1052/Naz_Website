@@ -145,32 +145,73 @@
   </footer>
   <script>
 window.addEventListener('load', function () {
-  var screenWidth = window.innerWidth;
+  var procreateMsnry;
+  var procreateElem = document.querySelector('.procreate-container');
   
-  if (screenWidth >= 768) {
-    var procreateElem = document.querySelector('.procreate-container');
+  function initMasonry() {
+    var screenWidth = window.innerWidth;
     
-    if (procreateElem) {
-      // Initialize Masonry after all images have loaded
-      imagesLoaded(procreateElem, function () {
-        // Create a dummy element to calculate column width
-        var columnWidth = procreateElem.querySelector('.cake');
-        
-        var procreateMsnry = new Masonry(procreateElem, {
-          itemSelector: '.cake',
-          columnWidth: columnWidth,
-          gutter: 15,
-          percentPosition: true,
-          transitionDuration: 0,
-          fitWidth: true
-        });
-        
-        // Force relayout after a short delay to ensure all images are positioned
-        setTimeout(function() {
-          procreateMsnry.layout();
-        }, 100);
+    if (screenWidth >= 768 && procreateElem) {
+      // Get actual container width minus padding
+      var containerStyle = window.getComputedStyle(procreateElem);
+      var containerPadding = parseFloat(containerStyle.paddingLeft) + parseFloat(containerStyle.paddingRight);
+      var containerWidth = procreateElem.offsetWidth - containerPadding;
+      
+      // Calculate how many images can fit per row
+      var imageMaxWidth = 220; // From CSS max-width
+      var gutter = 15;
+      var imagesPerRow = Math.floor(containerWidth / (imageMaxWidth + gutter));
+      
+      // Ensure at least 2 images per row
+      if (imagesPerRow < 2) imagesPerRow = 2;
+      
+      // Calculate column width - use smaller units like original
+      // Original used 100px, we'll calculate dynamically based on container
+      var columnWidth = Math.floor(containerWidth / (imagesPerRow * 2.2));
+      
+      console.log('Container width:', containerWidth);
+      console.log('Images per row calculated:', imagesPerRow);
+      console.log('Column width:', columnWidth);
+      console.log('This should allow images to span ~2 columns each');
+      
+      // Initialize or reinitialize Masonry
+      if (procreateMsnry) {
+        procreateMsnry.destroy();
+      }
+      
+      procreateMsnry = new Masonry(procreateElem, {
+        itemSelector: '.cake',
+        columnWidth: columnWidth,
+        gutter: gutter,
+        percentPosition: true,
+        transitionDuration: 0
       });
+      
+      // Log Masonry's state after initialization
+      setTimeout(function() {
+        console.log('Masonry columns created:', procreateMsnry.cols);
+        console.log('Masonry column width:', procreateMsnry.columnWidth);
+        console.log('First few items positions:', procreateMsnry.items.slice(0, 5).map(function(item) {
+          return { x: item.position.x, y: item.position.y };
+        }));
+      }, 100);
     }
+  }
+  
+  // Initialize after images load
+  if (procreateElem) {
+    imagesLoaded(procreateElem, function () {
+      initMasonry();
+    });
+    
+    // Reinitialize on window resize
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        initMasonry();
+      }, 250);
+    });
   }
 });
 </script>
