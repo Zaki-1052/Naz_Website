@@ -201,6 +201,16 @@ const checkMasonry = setInterval(() => {
   checkCount++;
   console.log('Check #' + checkCount + ' - Looking for masonry initialization...');
   
+  // DIAGNOSTIC: Check if we're on mobile
+  const isMobile = window.innerWidth < 768;
+  console.log('📊 DIAGNOSTIC - Mobile check:', isMobile, 'Width:', window.innerWidth);
+  
+  if (isMobile) {
+    console.log('📱 DIAGNOSTIC - Mobile detected, masonry should not initialize');
+    clearInterval(checkMasonry);
+    return;
+  }
+  
   if (container && container.classList.contains('masonry-initialized')) {
     console.log('✅ MASONRY INITIALIZED!');
     console.log('Container after masonry:');

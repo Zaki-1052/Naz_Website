@@ -37,9 +37,11 @@
   }
   
   .grid-item {
-    flex: 0 1 calc(50% - 0.375rem);
+    flex: 1 1 100%; /* Full width = single column */
     margin-bottom: 0;
-    max-width: 200px;
+    max-width: 220px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -131,9 +133,11 @@
 /* Mobile support for legacy .cake class */
 @media (max-width: 767px) {
   .masonry-grid-container .cake {
-    flex: 0 1 calc(50% - 0.375rem);
-    margin-bottom: 0;
-    max-width: 200px;
+    flex: 1 1 100%; /* Full width = single column */
+    margin-bottom: 0.75rem;
+    max-width: 220px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 

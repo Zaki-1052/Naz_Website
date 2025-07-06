@@ -14,7 +14,7 @@ class MasonryGrid {
     // Default configuration
     this.config = {
       breakpoints: {
-        mobile: { maxWidth: 767, columns: 2 },
+        mobile: { maxWidth: 768, columns: 1 },
         tablet: { maxWidth: 1023, columns: 3 },
         desktop: { maxWidth: 1399, columns: 4 },
         large: { maxWidth: 9999, columns: 5 } // Changed from Infinity to large number
@@ -42,6 +42,15 @@ class MasonryGrid {
 
     if (!window.imagesLoaded) {
       console.error('MasonryGrid: imagesLoaded library not found. Please include imagesloaded.pkgd.min.js');
+      return;
+    }
+
+    // Skip masonry initialization on mobile devices (< 768px)
+    // Let CSS handle natural document flow instead
+    if (window.innerWidth < 768) {
+      console.log('📱 DIAGNOSTIC - Mobile device detected, skipping masonry initialization');
+      console.log('📱 DIAGNOSTIC - Window width:', window.innerWidth, 'Threshold: 768px');
+      console.log('📱 DIAGNOSTIC - Container will NOT get masonry-initialized class');
       return;
     }
 
@@ -234,6 +243,12 @@ class MasonryGrid {
   }
 
   handleResize() {
+    // Skip masonry operations on mobile devices (< 768px)
+    if (window.innerWidth < 768) {
+      console.log('📱 Mobile device detected during resize, skipping masonry operations');
+      return;
+    }
+
     const newBreakpoint = this.getCurrentBreakpoint();
     console.log('🔄 Resize triggered, current:', this.currentBreakpoint?.name, 'new:', newBreakpoint.name);
     
