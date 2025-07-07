@@ -38,7 +38,7 @@ h1 {
 
 @font-face {
   font-family: 'HelloKennedy';
-  src: url('./fonts/HelloKennedy.ttf') format('truetype');
+  src: url('./fonts/Poppins-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -59,7 +59,7 @@ h1 {
 
 @font-face {
   font-family: 'HelloAli';
-  src: url('./fonts/HelloAli.ttf') format('truetype');
+  src: url('./fonts/Poppins-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
